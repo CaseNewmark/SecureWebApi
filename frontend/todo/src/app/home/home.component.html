@@ -1,0 +1,24 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Summary</th>
+            <th scope="col">Celsius</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+@for (forecast of weatherForecasts; track $index) {
+        <tr>
+            <td scope="row">{{ forecast.summary }}</td>
+            <td>
+                <ngb-progressbar class="mb-3" type="success" [ariaValueMin]="-30" [ariaValueMax]="60" [value]="forecast.temperatureC" />
+                <span>{{forecast.temperatureC}}</span>
+            </td>
+            <td>{{ forecast.date }}</td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>{{ counter }}</div>
+<button class="btn btn-primary" (click)="clickResetButton()">Click to reset</button>
