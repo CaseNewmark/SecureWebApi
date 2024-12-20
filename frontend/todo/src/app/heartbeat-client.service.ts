@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class HeartbeatClientService {
   private hubConnection: signalR.HubConnection;
 
-  constructor() { 
+  constructor() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5178/heartbeat') // SignalR hub URL
+      .withUrl('http://localhost:5283/heartbeat') // SignalR hub URL
       .build();
   }
-  
+
   connect(): Observable<void> {
     return new Observable<void>((observer) => {
       this.hubConnection
