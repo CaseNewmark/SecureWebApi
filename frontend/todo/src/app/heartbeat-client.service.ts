@@ -10,7 +10,7 @@ export class HeartbeatClientService {
 
   constructor() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5283/heartbeat') // SignalR hub URL
+      .withUrl('http://localhost:5094/heartbeat') // SignalR hub URL
       .build();
   }
 

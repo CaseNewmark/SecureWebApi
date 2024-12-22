@@ -9,6 +9,8 @@ services:
       POSTGRES_DB: keycloak_db
       POSTGRES_USER: keycloak_db_user
       POSTGRES_PASSWORD: keycloak_db_user_password
+    ports:
+      - 5432:5432
 
   keycloak:
     image: quay.io/keycloak/keycloak:23.0.6
