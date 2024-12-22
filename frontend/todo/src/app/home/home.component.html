@@ -12,7 +12,7 @@
         <tr>
             <td scope="row">{{ forecast.summary }}</td>
             <td>
-                <ngb-progressbar class="mb-3" type="success" [ariaValueMin]="-30" [ariaValueMax]="60" [value]="forecast.temperatureC" />
+                <ngb-progressbar class="mb-3" type="success" [ariaValueMin]="-30" [ariaValueMax]="60" [value]="forecast.temperatureC!" />
                 <span>{{forecast.temperatureC}}</span>
             </td>
             <td>{{ forecast.date }}</td>
