@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherForecast, WeatherForecastService } from '../weather-forecast.service';
 import { Observable } from 'rxjs';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeartbeatClientService } from '../heartbeat-client.service';
+import { HeartbeatClientService } from '../services/heartbeat-client.service';
+import { ApiClientService, WeatherForecast } from '../services/api-client-service';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +17,13 @@ export class HomeComponent implements OnInit {
   counter: number = 0;
 
   constructor(
-    private weatherForecastService: WeatherForecastService,
+    private weatherForecastService: ApiClientService,
     private heartbeatService: HeartbeatClientService
   ) {}
 
   ngOnInit()
   {
-    this.weatherForecastService.getWeatherForecasts().subscribe(forecasts => {
+    this.weatherForecastService.getWeatherForecast().subscribe(forecasts => {
       this.weatherForecasts = forecasts;
     });
     this.heartbeatService.bumpOccurred().subscribe(counter => this.counter = counter);

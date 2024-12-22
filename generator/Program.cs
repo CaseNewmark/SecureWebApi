@@ -15,10 +15,12 @@ await GenerateClient(
     {
         var settings = new TypeScriptClientGeneratorSettings();
 
+        settings.ClassName = "ApiClientService";
         settings.Template = TypeScriptTemplate.Angular;
         settings.PromiseType = PromiseType.Promise;
         settings.HttpClass = HttpClass.HttpClient;
         settings.RxJsVersion = 7;
+        settings.UseSingletonProvider = true;
         settings.InjectionTokenType = InjectionTokenType.InjectionToken;
         settings.TypeScriptGeneratorSettings.TypeStyle = TypeScriptTypeStyle.Interface;
         settings.TypeScriptGeneratorSettings.TypeScriptVersion = 5.5M;

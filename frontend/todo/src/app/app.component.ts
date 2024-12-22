@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeartbeatClientService } from './heartbeat-client.service';
+import { HeartbeatClientService } from './services/heartbeat-client.service';
 
 @Component({
   selector: 'app-root',
