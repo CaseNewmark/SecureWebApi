@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using TodoBackend.Authentication;
 using TodoBackend.Controllers;
+using TodoBackend.Database;
 using TodoBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +26,9 @@ builder.Services.AddCors(o =>
             .AllowCredentials()
             .WithOrigins("http://localhost:4200")));
 builder.Services.AddSignalR();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
