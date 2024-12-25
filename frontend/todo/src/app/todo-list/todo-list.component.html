@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h1 class="mb-4">ToDo List</h1>
+  <ul class="list-group mb-4">
+    @for (item of items; track $index) {
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="item.isComplete" (change)="updateItem(item)">
+          @if (item.isEditing) {
+            <input class="form-control d-inline-block w-auto" [(ngModel)]="item.name" (blur)="updateItem(item)">
+          }
+          @else {
+            <span>{{ item.name }}</span>
+          }
+        </div>
+        <div>
+          <button class="btn btn-secondary btn-sm me-2" (click)="editItem(item)">{{ item.isEditing ? 'Save' : 'Edit' }}</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteItem(item.id!)">Delete</button>
+        </div>
+      </li>
+    }
+  </ul>
+  <div class="input-group mb-3">
+    <input [(ngModel)]="newItem.name" class="form-control" placeholder="Name">
+    <button class="btn btn-primary" (click)="addItem()">Add</button>
+  </div>
+</div>
