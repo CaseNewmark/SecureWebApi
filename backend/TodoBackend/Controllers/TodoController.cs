@@ -41,6 +41,7 @@ public class TodoController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<TodoItem>> CreateTodoItem(TodoItem todoItem)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
