@@ -344,7 +344,7 @@ export class ApiClientService {
 
 export interface TodoItem {
     id?: number;
-    name?: string | undefined;
+    name: string | undefined;
     isComplete?: boolean;
     userId: string | undefined;
 }

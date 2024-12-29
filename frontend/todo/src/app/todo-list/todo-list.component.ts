@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiClientService, TodoItem } from '../services/api-client-service';
 import { FormsModule } from '@angular/forms';
+import { EditableLabelComponent } from '../editable-label/editable-label.component';
 
 interface EditableTodoItem extends TodoItem {
   isEditing: boolean;
@@ -9,7 +10,7 @@ interface EditableTodoItem extends TodoItem {
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, EditableLabelComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
@@ -37,19 +38,14 @@ export class TodoListComponent implements OnInit {
   }
 
   updateItem(item: TodoItem): void {
-    this.apiClientService.todoPOST(item).subscribe();
+    if (item.id !== undefined) {
+      this.apiClientService.todoPUT(item.id, item).subscribe();
+    }
   }
 
   deleteItem(id: number): void {
     this.apiClientService.todoDELETE(id).subscribe(() => {
       this.items = this.items.filter(item => item.id !== id);
     });
-  }
-
-  editItem(item: EditableTodoItem): void {
-    item.isEditing = !item.isEditing;
-    if (!item.isEditing) {
-      this.updateItem(item);
-    }
   }
 }
