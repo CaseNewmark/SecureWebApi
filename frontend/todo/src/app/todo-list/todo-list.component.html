@@ -2,19 +2,30 @@
   <h1 class="mb-4">ToDo List</h1>
   <ul class="list-group mb-4">
     @for (item of items; track $index) {
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <app-editable-label [(value)]="item.name" (valueChange)="updateItem(item)"></app-editable-label>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" [(ngModel)]="item.isComplete" (change)="updateItem(item)">
-        </div>
-        <div>
-          <button class="btn btn-danger btn-sm" (click)="deleteItem(item.id!)">Delete</button>
-        </div>
-      </li>
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center gap-1"
+    >
+      <app-editable-label
+        [(value)]="item.name"
+        (valueChange)="updateItem(item)"
+      ></app-editable-label>
+      <i
+        class="bi"
+        [ngClass]="{
+          'bi-check-circle-fill text-success': item.isComplete,
+          'bi-circle text-secondary': !item.isComplete
+        }"
+        (click)="toggleComplete(item)"
+      ></i>
+      <i
+        class="bi bi-x-circle-fill text-danger"
+        (click)="deleteItem(item.id!)"
+      ></i>
+    </li>
     }
   </ul>
   <div class="input-group mb-3">
-    <input [(ngModel)]="newItem.name" class="form-control" placeholder="Name">
+    <input [(ngModel)]="newItem.name" class="form-control" placeholder="Name" />
     <button class="btn btn-primary" (click)="addItem()">Add</button>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiClientService, TodoItem } from '../services/api-client-service';
 import { FormsModule } from '@angular/forms';
 import { EditableLabelComponent } from '../editable-label/editable-label.component';
+import { CommonModule } from '@angular/common';
 
 interface EditableTodoItem extends TodoItem {
   isEditing: boolean;
@@ -10,7 +11,7 @@ interface EditableTodoItem extends TodoItem {
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [FormsModule, EditableLabelComponent],
+  imports: [FormsModule, EditableLabelComponent, CommonModule],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })
@@ -47,5 +48,10 @@ export class TodoListComponent implements OnInit {
     this.apiClientService.todoDELETE(id).subscribe(() => {
       this.items = this.items.filter(item => item.id !== id);
     });
+  }
+
+  toggleComplete(item: TodoItem) {
+    item.isComplete = !item.isComplete;
+    this.updateItem(item);
   }
 }
