@@ -1,5 +1,8 @@
 <div class="container mt-4">
   <h1 class="mb-4">ToDo List</h1>
+  @if (items.length === 0) {
+  <p class="fst-italic text-muted align-items-center">No Todos yet.</p>
+  } @else {
   <ul class="list-group mb-4">
     @for (item of items; track $index) {
     <li
@@ -24,6 +27,7 @@
     </li>
     }
   </ul>
+  }
   <div class="input-group mb-3">
     <input [(ngModel)]="newItem.name" class="form-control" placeholder="Name" />
     <button class="btn btn-primary" (click)="addItem()">Add</button>
