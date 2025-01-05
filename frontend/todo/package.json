@@ -24,6 +24,7 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
     "d3": "^7.9.0",
+    "interactjs": "^1.10.27",
     "keycloak-angular": "^16.0.1",
     "keycloak-js": "^25.0.4",
     "rxjs": "~7.8.0",

@@ -1,0 +1,16 @@
+<div class="workspace-container">
+  <button class="btn btn-primary mb-3" (click)="addBox()">Add Box</button>
+  <div class="workspace">
+    @for (box of boxes; track 'id') {
+      <div
+        class="box draggable"
+        [attr.data-id]="box.id"
+        [attr.data-x]="box.x"
+        [attr.data-y]="box.y"
+      >
+        <h3>{{ box.title }}</h3>
+        <p>{{ box.content }}</p>
+      </div>
+    }
+  </div>
+</div>

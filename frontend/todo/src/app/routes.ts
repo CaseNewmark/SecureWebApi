@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
 import { AuthGuard } from './guard/auth.guard';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { WorkspaceComponent } from './workspace/workspace.component';
 
 export const routeConfig: Routes = [
   {
@@ -21,6 +22,11 @@ export const routeConfig: Routes = [
     path: 'test',
     component: TestComponent,
     title: 'Home details',
+  },
+  {
+    path: 'workspace',
+    component: WorkspaceComponent,
+    title: 'Workspace',
   },
   {
     path: '**',
